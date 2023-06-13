@@ -2,16 +2,17 @@
 #include <stack>
 #include <sstream>
 #include <stdexcept>
+#include <cstdlib>
 
 RPN::RPN() {}
 RPN::~RPN() {}
 RPN::RPN(const RPN &s_RPN) {
-	*this = s_RPN;
+    *this = s_RPN;
 }
 RPN &RPN::operator=(RPN const &s_RPN) {
-	if (this != &s_RPN) {
-	}
-	return *this;
+    if (this != &s_RPN) {
+    }
+    return *this;
 }
 
 float applyOperator(const char op, float b, float a) {
@@ -36,8 +37,13 @@ float RPN::calculate(const std::string& expression) {
             float right_operand = stack.top(); stack.pop();
             float left_operand = stack.top(); stack.pop();
             stack.push(applyOperator(token[0], right_operand, left_operand));
-        } else { // Assume it's a number
-            stack.push(std::stof(token));
+        } else {
+            char* end;
+            float value = std::strtof(token.c_str(), &end);
+            if (end == token.c_str()) {
+                throw std::runtime_error("Invalid number");
+            }
+            stack.push(value);
         }
     }
     if (stack.size() != 1) {

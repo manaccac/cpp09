@@ -8,7 +8,7 @@ SRCS_NAME     = BitcoinExchange.cpp main.cpp
 OBJS          = ${SRCS_NAME:.cpp=.o}
 NAME          = btc
 RM            = rm -f
-FLAGS         = -Wall -Wextra -Werror
+FLAGS         = -std=c++98 -Wall -Wextra -Werror
 SRCS          = $(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 
 # **************************************************************************** #

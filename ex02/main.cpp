@@ -2,6 +2,7 @@
 #include <vector>
 #include <deque>
 #include <iostream>
+#include <cstdlib>
 
 int main(int argc, char** argv) {
     if (argc < 2) {
@@ -9,16 +10,15 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-
     std::vector<int> sequenceVec;
     std::deque<int> sequenceDeq;
 
     for (int i = 1; i < argc; ++i) {
-        int number = std::stoi(argv[i]);
-		if (number < 0) {
-			std::cout << "Error: negative number.\n";
-			return 1;
-		}
+        int number = std::atoi(argv[i]);
+        if (number < 0) {
+            std::cout << "Error: negative number.\n";
+            return 1;
+        }
         sequenceVec.push_back(number);
         sequenceDeq.push_back(number);
     }

@@ -8,7 +8,7 @@ SRCS_NAME     = PmergeMe.cpp main.cpp
 OBJS          = ${SRCS_NAME:.cpp=.o}
 NAME          = PmergeMe
 RM            = rm -f
-FLAGS         = -Wall -Wextra -Werror -std=c++98
+FLAGS         = -std=c++98 -Wall -Wextra -Werror -std=c++98
 SRCS          = $(addprefix $(SRC_PATH)/,$(SRCS_NAME))
 
 
