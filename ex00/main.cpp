@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Opening file " << argv[1] << "\n";
 
     if (!inputFile.is_open()) {
-        std::cerr << "Could not open file " + std::string(argv[1]) + "\n";
+        std::cerr << "Error: could not open file." + std::string(argv[1]) + "\n";
         return 1;
     }
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
         char *end;
         float value = std::strtof(valueStr.c_str(), &end);
         if (!isValidDate(date)) {
-            std::cerr << "Invalid date format" << "\n";
+            std::cerr << "Error: bad input => " << date << "\n";
             continue;
         }
         if (end == valueStr.c_str()) {
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
 			continue;
 		}
         if (value > 1000) {
-            std::cerr << "Value out of range" << "\n";
+            std::cerr << "Error: too large a number." << "\n";
             continue;
         }
         float result = btc.evaluate(date, value);
